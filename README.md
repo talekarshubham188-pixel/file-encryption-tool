@@ -27,6 +27,9 @@ The tool allows users to encrypt and decrypt files using password-based AES encr
 Example:
 photo.jpg → photo.jpg.enc
 
-## Author
+## Team members 
 Shubham  
+sujan 
+siddharth
+sudheer
 Cybersecurity Internship Project
