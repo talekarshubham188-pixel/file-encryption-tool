@@ -28,8 +28,8 @@ Example:
 photo.jpg → photo.jpg.enc
 
 ## Team members 
-Shubham  
-sujan 
-siddharth
-sudheer
+Shubham, 
+sujan,
+siddharth,
+sudheer,
 Cybersecurity Internship Project
