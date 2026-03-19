@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Encryption Tool (Demo)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 450px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="file"] {
+      margin-bottom: 15px;
+    }
+    button {
+      width: 48%;
+      padding: 10px;
+      margin: 5px 1%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .output {
+      margin-top: 15px;
+      padding: 10px;
+      background: #eef;
+      border-radius: 4px;
+      min-height: 80px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>File Encryption Tool (Demo)</h2>
+    <input type="file" id="fileInput">
+    <div>
+      <button onclick="encryptFile()">Encrypt</button>
+      <button onclick="decryptFile()">Decrypt</button>
+    </div>
+    <div class="output" id="outputText"></div>
+  </div>
+
+  <script>
+    let fileContent = "";
+
+    // Read file content
+    document.getElementById("fileInput").addEventListener("change", function() {
+      const reader = new FileReader();
+      reader.onload = function() {
+        fileContent = reader.result;
+        document.getElementById("outputText").innerText = "File loaded successfully!";
+      };
+      reader.readAsText(this.files[0]);
+    });
+
+    // Simple Caesar cipher-like shift
+    function simpleShift(text, shift) {
+      return text.split("").map(char => {
+        return String.fromCharCode(char.charCodeAt(0) + shift);
+      }).join("");
+    }
+
+    function encryptFile() {
+      if (!fileContent) {
+        document.getElementById("outputText").innerText = "Please upload a file first!";
+        return;
+      }
+      let encrypted = simpleShift(fileContent, 3); // shift characters by +3
+      document.getElementById("outputText").innerText = encrypted;
+    }
+
+    function decryptFile() {
+      if (!fileContent) {
+        document.getElementById("outputText").innerText = "Please upload a file first!";
+        return;
+      }
+      let decrypted = simpleShift(fileContent, -3); // shift characters back
+      document.getElementById("outputText").innerText = decrypted;
+    }
+  </script>
+</body>
+</html>
